@@ -82,7 +82,7 @@ gulp.task('build', ['clean'], function() {
   if (buildProduction) {
     gulp.start('minifyScripts');
   } else {
-    gulp.start('test');
+    // gulp.start('test');
     gulp.start('jsBrowserify');
   }
   gulp.start('bower');

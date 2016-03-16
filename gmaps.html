@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <script src="http://maps.google.com/maps/api/js"></script>
+  <link rel="stylesheet" href="build/css/vendor.css">
+  <script src="build/js/vendor.min.js"></script>
+  <script type="text/javascript" src="build/js/app.js"></script>
+  <script type="text/javascript" src="/js/gmaps-interface.js"></script>
+
+  </script>
+  <style type="text/css">
+    #map {
+      width: 400px;
+      height: 400px;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <script>
+    var map = new GMaps({
+      el: '#map',
+      lat: 45.520708,
+      lng: -122.677398
+    });
+
+  map.addMarker({
+  lat: 45.6,
+  lng: -123.028333,
+  title: "Marker",
+  click: function(e) {
+    prompt('Give me your bank account information: ');
+  }
+
+  
+});
+  </script>
+  <a href="index.html">home</a>
+</body>
+</html>

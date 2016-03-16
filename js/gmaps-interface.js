@@ -1,50 +1,3 @@
-var Blog = require('./../js/Blog.js').Blog;
-var moment = require('moment');
-// var apiKey = require('./../.env').apiKey;
-
-$(document).ready(function(){
-
-  $('#blog').submit(function(event){
-    event.preventDefault();
-    var title = $('#title').val();
-    $.get('http://dinoipsum.herokuapp.com/api/?format=text&paragraphs=3').then(function(response) {
-
-      fillContainer = function(html) {
-        $('#body').html(html);
-      },
-      oops = function() {
-        console.log('Where did all the dinosaurs go?');
-      };
-      var body = response;
-      console.log(body);
-      var entry = new Blog(title, body);
-      var count = entry.countWords();
-      $('#your_title').text("Title: " + title);
-      $('#your_body').text("Here is your blog entry for today: " + body);
-      $('#word-count').text(count);
-      $('#date').text(moment().format("dddd, MMMM Do YYYY, h:mm:ss a"));
-    });
-  });
-  });
-  // jQuery.ajax example
-  // var getDinoTitle = $.get('http://dinoipsum.herokuapp.com/api/?format=text&paragraphs=1&words=2'),
-  //     fillContainer2 = function(html) {
-  //       $('#title').html(html);
-  //     },
-  //     oops = function() {
-  //       console.log('Where did all the dinosaurs go?');
-  //     };
-  // var getDinos = $.get('http://dinoipsum.herokuapp.com/api/?format=text&paragraphs=3'),
-  //     fillContainer = function(html) {
-  //       $('#some-awesome-container').html(html);
-  //     },
-  //     oops = function() {
-  //       console.log('Where did all the dinosaurs go?');
-  //     };
-
-  // getDinoTitle.then(fillContainer2, oops);
-  // getDinos.then(fillContainer, oops);
-
 "use strict";
 (function(root, factory) {
   if(typeof exports === 'object') {
@@ -2315,15 +2268,3 @@ if (!Array.prototype.indexOf) {
 
 return GMaps;
 }));
-
-var apiKey = "adfb6c08f301ba43007da5fb6b0c50b9";
-
-$(document).ready(function(){
-  $('#weatherLocation').click(function(){
-    var city = $('#location').val();
-    $('#location').val("");
-    $.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKey, function(response) {
-    $('.showWeather').text("The humidity in " + city + " is " + response.main.humidity + "%");
-    });
-  });
-});
